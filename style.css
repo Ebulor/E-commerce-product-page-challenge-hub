@@ -49,7 +49,7 @@ nav {
   width: 70%;
   min-height: 100vh;
 }
-.navbar.nav-active {
+.nav-active.navbar {
   display: flex;
 }
 .nav-links {
@@ -189,11 +189,15 @@ hr {
   width: 100%;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 .product .product-img {
   width: 100%;
+}
+.thumbnails {
+  display: none;
 }
 .buttons {
   position: absolute;
@@ -216,6 +220,9 @@ hr {
 }
 .buttons img {
   width: 10px;
+}
+.modal-container {
+  display: none;
 }
 .description {
   width: 80%;
@@ -292,10 +299,10 @@ hr {
   justify-content: center;
 }
 .add-to-cart button p::before {
-  content: url(images/icon-cart\ copy.svg);
+  content: url(images/icon-cart\copy.svg);
   margin-right: 20px;
 }
-@media (min-width: 900px) {
+@media (min-width: 1000px) {
   hr {
     display: block;
     border: 1px solid var(--Lightgrayishblue);
@@ -311,6 +318,7 @@ hr {
     position: relative;
     width: unset;
     min-height: unset;
+    transform: unset;
   }
   .close-menu,
   .toggle-menu {
@@ -321,15 +329,33 @@ hr {
     padding: 0;
   }
   .nav-links a {
-    padding: 0 10px;
+    margin: 0 10px;
+    padding: 0;
     font-weight: 400;
     color: var(--Darkgrayishblue);
+    position: relative;
+  }
+  .nav-links a:hover {
+    color: black;
+  }
+  .nav-links a::after {
+    content: "";
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    background-color: var(--Orange);
+    width: 100%;
+    height: 4px;
+  }
+  .nav-links a:hover::after {
+    display: block;
   }
   .logo {
     margin: 0;
   }
   .cart-item {
-    width: 26%;
+    width: 30%;
     left: 68%;
     box-shadow: 10px 10px 10px black;
   }
@@ -343,16 +369,119 @@ hr {
     width: 75%;
   }
   .product {
-    width: 50%;
+    width: 40%;
   }
   .product-img {
     border-radius: 20px;
   }
+  .modal-thumbnails,
+  .thumbnails {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 30px;
+  }
+  .modal-thumbnails {
+    justify-content: space-evenly;
+  }
+  .thumbnail {
+    width: 70px;
+    position: relative;
+    cursor: pointer;
+  }
+  .thumbnail::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    opacity: 50%;
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    display: none;
+  }
+  .thumbnail:hover::after {
+    display: block;
+  }
+  .thumbnail img {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+  }
+  .thumbnail.active img {
+    border: 3px solid var(--Orange);
+  }
+  .thumbnail.active:::after {
+    display: block;
+  }
   .buttons {
     display: none;
   }
+  .modal-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-height: 100vh;
+  }
+  .modal-container.show-modal {
+    display: flex;
+  }
+  .modal-container::before {
+    content: "";
+    position: absolute;
+    background-color: var(--Black);
+    opacity: 75%;
+    width: 100%;
+    height: 100%;
+  }
+  .modal {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+    position: relative;
+    z-index: 100;
+  }
+  .close-btn {
+    width: 20px;
+    margin-left: auto;
+    padding: 20px 0;
+    cursor: pointer;
+  }
+  .close-btn img {
+    width: 100%;
+  }
+  .modal-img {
+    width: 100%;
+    border-radius: 15px;
+    position: relative;
+  }
+  .modal-btn {
+    width: 100%;
+    position: absolute;
+    z-index: 100;
+    left: 0;
+    top: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .modal-btn .prev-btn {
+    position: absolute;
+    left: -20px;
+  }
+  .modal-btn .next-btn {
+    position: absolute;
+    right: -20px;
+  }
   .description {
-    width: 40%;
+    width: 50%;
   }
   .price {
     flex-direction: column;
