@@ -100,3 +100,36 @@ const closeModal = document.querySelector(".close-btn");
 closeModal.addEventListener("click", () => {
   modal.classList.remove("show-modal");
 });
+
+let product = 0;
+const products = [
+  "images/image-product-1.jpg",
+  "images/image-product-2.jpg",
+  "images/image-product-3.jpg",
+  "images/image-product-4.jpg"
+];
+const slide = document.querySelector(".modal-img");
+const nextBtn = document.querySelectorAll(".next-btn");
+const prevBtn = document.querySelectorAll(".prev-btn");
+nextBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    product++;
+    if (product >= products.length) {
+      return;
+    } else {
+      slide.src = products[product];
+    }
+    console.log(product);
+  });
+});
+prevBtn.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    product--;
+    if (product < 0) {
+      return;
+    } else {
+      slide.src = products[product];
+    }
+    console.log(product);
+  });
+});
