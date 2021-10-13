@@ -84,14 +84,55 @@ function deleteItem() {
 //modal
 const modal = document.querySelector(".modal-container");
 //open modal
-const openModal = document.querySelectorAll(".thumbnail");
-openModal.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    openModal.forEach((btn) => {
-      btn.classList.remove("active");
+const openModal = document.querySelectorAll(".thumbnails .thumbnail");
+openModal.forEach((btns, index) => {
+  btns.addEventListener("click", (e) => {
+    openModal.forEach((btns) => {
+      btns.classList.remove("active");
     });
-    btn.classList.add("active");
+    btns.classList.add("active");
+
     modal.classList.add("show-modal");
+
+    //show thumbnail pop-up
+    const products = [
+      "images/image-product-1.jpg",
+      "images/image-product-2.jpg",
+      "images/image-product-3.jpg",
+      "images/image-product-4.jpg"
+    ];
+    const slide = document.querySelector(".modal-img");
+    slide.src = products[index];
+
+    //next and prev btn
+    let product = 0;
+    console.log(product);
+    const nextBtn = document.querySelectorAll(".next-btn");
+    const prevBtn = document.querySelectorAll(".prev-btn");
+    nextBtn.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        product++;
+        if (product >= products.length) {
+          product = products.length - 1;
+          return;
+        } else {
+          slide.src = products[product];
+          const next = btns.nextElementSibling;
+          console.log(next);
+        }
+      });
+    });
+    prevBtn.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        product--;
+        if (product < 0) {
+          product = 0;
+          return;
+        } else {
+          slide.src = products[product];
+        }
+      });
+    });
   });
 });
 
@@ -101,35 +142,25 @@ closeModal.addEventListener("click", () => {
   modal.classList.remove("show-modal");
 });
 
-let product = 0;
-const products = [
-  "images/image-product-1.jpg",
-  "images/image-product-2.jpg",
-  "images/image-product-3.jpg",
-  "images/image-product-4.jpg"
-];
-const slide = document.querySelector(".modal-img");
-const nextBtn = document.querySelectorAll(".next-btn");
-const prevBtn = document.querySelectorAll(".prev-btn");
-nextBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    product++;
-    if (product >= products.length) {
-      return;
-    } else {
-      slide.src = products[product];
-    }
-    console.log(product);
-  });
-});
-prevBtn.forEach((btn) => {
-  btn.addEventListener("click", () => {
-    product--;
-    if (product < 0) {
-      return;
-    } else {
-      slide.src = products[product];
-    }
-    console.log(product);
+//update slide position
+const popModal = document.querySelectorAll(".modal-thumbnails .thumbnail");
+popModal.forEach((btns, index) => {
+  btns.addEventListener("click", (e) => {
+    popModal.forEach((btns) => {
+      btns.classList.remove("active");
+    });
+    btns.classList.add("active");
+
+    modal.classList.add("show-modal");
+
+    //show thumbnail pop-up
+    const products = [
+      "images/image-product-1.jpg",
+      "images/image-product-2.jpg",
+      "images/image-product-3.jpg",
+      "images/image-product-4.jpg"
+    ];
+    const slide = document.querySelector(".modal-img");
+    slide.src = products[index];
   });
 });

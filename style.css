@@ -413,7 +413,7 @@ hr {
   .thumbnail.active img {
     border: 3px solid var(--Orange);
   }
-  .thumbnail.active:::after {
+  .thumbnail.active::after {
     display: block;
   }
   .buttons {
