@@ -430,11 +430,11 @@ hr {
   }
   .container {
     flex-direction: row;
-    width: 75%;
+    width: 80%;
     padding: 60px;
   }
   .product {
-    width: 55%;
+    width: 50%;
     height: unset;
     margin-right: 80px;
   }
