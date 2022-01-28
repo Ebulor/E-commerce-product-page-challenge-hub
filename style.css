@@ -27,6 +27,7 @@ nav {
   width: 80%;
   flex-wrap: wrap;
   padding: 20px 0;
+  position: relative;
 }
 .nav-left,
 .nav-right {
@@ -68,8 +69,8 @@ nav {
   margin-left: 30px;
 }
 .cart {
-  cursor: pointer;
   position: relative;
+  cursor: pointer;
 }
 .cart img {
   width: 20px;
@@ -91,9 +92,9 @@ nav {
   border-radius: 8px;
   position: absolute;
   z-index: 1;
-  top: 15%;
-  left: 5%;
-  width: 90%;
+  top: 6em;
+  left: 0%;
+  width: 100%;
   display: none;
   flex-direction: column;
 }
@@ -102,6 +103,8 @@ nav {
 }
 .heading {
   padding: 20px;
+  display: flex;
+  align-items: center;
   font-weight: 700;
 }
 .cart-item hr {
@@ -109,7 +112,7 @@ nav {
   border: 1px solid var(--Lightgrayishblue);
 }
 .cart-content {
-  height: 200px;
+  height: 180px;
   width: 100%;
   padding: 20px;
   display: flex;
@@ -175,6 +178,11 @@ nav {
 }
 .profile-img img {
   width: 100%;
+  cursor: pointer;
+}
+.profile-img img:hover {
+  border-radius: 50%;
+  border: 2px solid var(--Orange);
 }
 hr {
   display: none;
@@ -292,12 +300,14 @@ hr {
   background-color: var(--Orange);
   outline: none;
   border-radius: 10px;
-  border: 1px solid transparent;
+  border: 0px solid transparent;
   padding: 15px;
   width: 100%;
   color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 1rem;
+  box-shadow: 0px 3px 15px var(--Orange);
+  position: relative;
 }
 .add-to-cart button p {
   display: flex;
@@ -308,7 +318,53 @@ hr {
   content: url(images/icon-cart\copy.svg);
   margin-right: 20px;
 }
-@media (min-width: 1000px) {
+.add-to-cart button p span {
+  margin-right: 10px;
+}
+.add-to-cart button p span img {
+  width: 15px;
+}
+.add-to-cart button::after {
+  content: "";
+  display: none;
+  background: white;
+  position: absolute;
+  opacity: 20%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+}
+.add-to-cart button:hover::after {
+  display: block;
+}
+@media (min-width: 900px) {
+  .container {
+    align-items: flex-start;
+    justify-content: left;
+  }
+  .description {
+    width: 600px;
+    padding: 40px 60px;
+  }
+
+  .add-to-cart {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 10px 0;
+    width: 300px;
+  }
+  .amount {
+    width: 40%;
+    margin: 0;
+  }
+  .add-to-cart button {
+    width: 55%;
+  }
+}
+@media (min-width: 1300px) {
   hr {
     display: block;
     border: 1px solid var(--Lightgrayishblue);
@@ -361,9 +417,12 @@ hr {
     margin: 0;
   }
   .cart-item {
-    width: 30%;
-    left: 68%;
-    box-shadow: 10px 10px 10px black;
+    width: 400px;
+    margin-left: auto;
+    right: 0;
+    box-shadow: 10px 20px 10px #a8a8a8;
+    z-index: 100;
+    top: 6rem;
   }
   .profile-img {
     width: 50px;
@@ -393,7 +452,7 @@ hr {
     justify-content: space-evenly;
   }
   .thumbnail {
-    width: 70px;
+    width: 80px;
     position: relative;
     cursor: pointer;
   }
@@ -427,6 +486,9 @@ hr {
   .buttons {
     display: none;
   }
+  .description {
+    width: 50%;
+  }
   .text h1 {
     font-size: 2.5rem;
   }
@@ -454,6 +516,7 @@ hr {
     justify-content: center;
     width: 100%;
     min-height: 100vh;
+    z-index: 100;
   }
   .modal-container.show-modal {
     display: flex;
@@ -518,9 +581,7 @@ hr {
   .modal-thumbnails {
     width: 55%;
   }
-  .description {
-    width: 40%;
-  }
+
   .price {
     flex-direction: column;
     align-items: flex-start;
@@ -532,30 +593,14 @@ hr {
     font-size: 1rem;
     padding: 4px 10px;
   }
-  .add-to-cart {
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 10px 0;
-  }
-  .amount {
-    width: 40%;
-    margin: 0;
-  }
-  .add-to-cart button {
-    width: 55%;
-  }
 }
-@media (min-width: 1300px) {
-  .thumbnail {
-    width: 90px;
-  }
-}
+
 @media (min-width: 1600px) {
   nav {
     width: 60%;
   }
   .container {
-    width: 60%;
+    width: 63%;
   }
   .product {
     width: 45%;
