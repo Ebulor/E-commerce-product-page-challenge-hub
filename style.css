@@ -364,7 +364,7 @@ hr {
     width: 55%;
   }
 }
-@media (min-width: 1300px) {
+@media (min-width: 1200px) {
   hr {
     display: block;
     border: 1px solid var(--Lightgrayishblue);
