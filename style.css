@@ -7,7 +7,7 @@
 :root {
   --Orange: hsl(26, 100%, 55%);
   --Paleorange: hsl(25, 100%, 94%);
-  --Veryvarkblue: hsl(220, 13%, 13%);
+  --VeryDarkblue: hsl(220, 13%, 13%);
   --Darkgrayishblue: hsl(219, 9%, 45%);
   --Grayishblue: hsl(220, 14%, 75%);
   --Lightgrayishblue: hsl(223, 64%, 98%);
@@ -187,14 +187,18 @@ hr {
 }
 .product {
   width: 100%;
+  height: 300px;
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  overflow: hidden;
 }
 .product .product-img {
   width: 100%;
+  position: relative;
+  object-fit: cover;
 }
 .thumbnails {
   display: none;
@@ -206,8 +210,7 @@ hr {
   justify-content: space-between;
   width: 90%;
 }
-.prev-btn,
-.next-btn {
+.mobile {
   cursor: pointer;
   background-color: white;
   width: 30px;
@@ -234,6 +237,9 @@ hr {
   font-size: 0.8rem;
   letter-spacing: 1px;
   padding-bottom: 10px;
+}
+.text h1 {
+  color: var(--VeryDarkblue);
 }
 .text p {
   color: var(--Darkgrayishblue);
@@ -307,7 +313,7 @@ hr {
     display: block;
     border: 1px solid var(--Lightgrayishblue);
     width: 100%;
-    margin: 10px 0;
+    margin: 20px 0;
   }
   .nav-left {
     flex-direction: row-reverse;
@@ -342,7 +348,7 @@ hr {
     content: "";
     display: none;
     position: absolute;
-    top: 56px;
+    top: 67px;
     left: 0;
     background-color: var(--Orange);
     width: 100%;
@@ -365,11 +371,13 @@ hr {
   }
   .container {
     flex-direction: row;
-    justify-content: space-between;
     width: 75%;
+    padding: 60px;
   }
   .product {
-    width: 40%;
+    width: 50%;
+    height: unset;
+    margin-right: 80px;
   }
   .product-img {
     border-radius: 20px;
@@ -419,8 +427,25 @@ hr {
   .buttons {
     display: none;
   }
+  .text h1 {
+    font-size: 2.5rem;
+  }
+  .text h4 {
+    font-size: 0.9rem;
+  }
+  .text p {
+    font-size: 1rem;
+    line-height: 1.6rem;
+    padding: 25px 0;
+  }
+  .price h2 {
+    font-size: 1.5rem;
+  }
+  .price p {
+    font-size: 1.2rem;
+  }
   .modal-container {
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     display: none;
@@ -444,7 +469,8 @@ hr {
   .modal {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    align-items: center;
+    width: 60%;
     position: relative;
     z-index: 100;
   }
@@ -457,31 +483,43 @@ hr {
   .close-btn img {
     width: 100%;
   }
-  .modal-img {
-    width: 100%;
-    border-radius: 15px;
-    position: relative;
-  }
-  .modal-btn {
-    width: 100%;
-    position: absolute;
-    z-index: 100;
-    left: 0;
-    top: 50%;
+  .modal-product {
+    width: 60%;
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    position: relative;
   }
-  .modal-btn .prev-btn {
-    position: absolute;
-    left: -20px;
+  .modal-img {
+    width: 100%;
   }
-  .modal-btn .next-btn {
+  .modal-img img {
+    width: 100%;
+    border-radius: 15px;
+  }
+  .modal-btn {
+    cursor: pointer;
+    background-color: white;
+    width: 1px;
+    height: 1px;
+    padding: 30px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    right: -20px;
+    z-index: 100;
+  }
+  .modal-btn.next-btn {
+    right: -30px;
+  }
+  .modal-btn.prev-btn {
+    left: -30px;
+  }
+  .modal-thumbnails {
+    width: 55%;
   }
   .description {
-    width: 50%;
+    width: 40%;
   }
   .price {
     flex-direction: column;
@@ -489,6 +527,10 @@ hr {
   }
   .price p {
     padding: 10px 0;
+  }
+  .price h2 span {
+    font-size: 1rem;
+    padding: 4px 10px;
   }
   .add-to-cart {
     flex-direction: row;
@@ -501,5 +543,34 @@ hr {
   }
   .add-to-cart button {
     width: 55%;
+  }
+}
+@media (min-width: 1300px) {
+  .thumbnail {
+    width: 90px;
+  }
+}
+@media (min-width: 1600px) {
+  nav {
+    width: 60%;
+  }
+  .container {
+    width: 60%;
+  }
+  .product {
+    width: 45%;
+    margin-right: 100px;
+  }
+  .thumbnail {
+    width: 90px;
+  }
+  .text h1 {
+    font-size: 2.8rem;
+  }
+  .price h2 {
+    font-size: 2rem;
+  }
+  .modal {
+    width: 50%;
   }
 }
