@@ -301,7 +301,7 @@ hr {
   outline: none;
   border-radius: 10px;
   border: 0px solid transparent;
-  padding: 15px;
+  padding: 20px;
   width: 100%;
   color: rgb(255, 255, 255);
   font-weight: 700;
@@ -347,7 +347,7 @@ hr {
   }
   .description {
     width: 600px;
-    padding: 40px 60px;
+    padding: 40px 50px;
   }
 
   .add-to-cart {
@@ -505,6 +505,9 @@ hr {
   }
   .price p {
     font-size: 1.2rem;
+  }
+  .add-to-cart {
+    width: 100%;
   }
   .modal-container {
     position: fixed;
