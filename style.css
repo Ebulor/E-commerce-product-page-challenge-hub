@@ -20,6 +20,28 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  height: 100%;
+}
+body::after {
+  content: "";
+  position: absolute;
+  background-color: black;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 75%;
+  display: none;
+}
+body.nav-open::after {
+  display: block;
+}
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 nav {
   display: flex;
@@ -43,7 +65,7 @@ nav {
   flex-direction: column;
   background-color: white;
   position: fixed;
-  z-index: 1;
+  z-index: 100;
   top: 0;
   left: 0;
   padding: 30px;
@@ -63,7 +85,7 @@ nav {
   color: black;
   text-transform: capitalize;
   font-weight: 700;
-  padding: 20px 0;
+  padding: 15px 0;
 }
 .logo {
   margin-left: 30px;
@@ -301,29 +323,20 @@ hr {
   outline: none;
   border-radius: 10px;
   border: 0px solid transparent;
-  padding: 20px;
+  padding: 15px 20px;
   width: 100%;
   color: rgb(255, 255, 255);
   font-weight: 700;
   font-size: 1rem;
-  box-shadow: 0px 3px 15px var(--Orange);
+  box-shadow: 0px 15px 10px -15px var(--Orange);
   position: relative;
 }
-.add-to-cart button p {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.add-to-cart button p::before {
-  content: url(images/icon-cart\copy.svg);
-  margin-right: 20px;
-}
-.add-to-cart button p span {
+
+.add-to-cart button img {
   margin-right: 10px;
-}
-.add-to-cart button p span img {
   width: 15px;
 }
+
 .add-to-cart button::after {
   content: "";
   display: none;
@@ -341,20 +354,19 @@ hr {
   display: block;
 }
 @media (min-width: 900px) {
-  .container {
-    align-items: flex-start;
-    justify-content: left;
-  }
   .description {
-    width: 600px;
-    padding: 40px 50px;
+    width: 500px;
+    padding: 40px 0 50px;
   }
-
+  .text p {
+    font-size: 1rem;
+  }
   .add-to-cart {
     flex-direction: row;
     justify-content: space-between;
     padding: 10px 0;
-    width: 300px;
+    width: 500px;
+    margin-top: 30px;
   }
   .amount {
     width: 40%;
@@ -365,6 +377,12 @@ hr {
   }
 }
 @media (min-width: 1200px) {
+  body::after {
+    display: none;
+  }
+  body.nav-open::after {
+    display: none;
+  }
   hr {
     display: block;
     border: 1px solid var(--Lightgrayishblue);
@@ -496,7 +514,7 @@ hr {
     font-size: 0.9rem;
   }
   .text p {
-    font-size: 1rem;
+    font-size: 1.03rem;
     line-height: 1.6rem;
     padding: 25px 0;
   }
@@ -504,10 +522,11 @@ hr {
     font-size: 1.5rem;
   }
   .price p {
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
   .add-to-cart {
     width: 100%;
+    margin-top: 0;
   }
   .modal-container {
     position: fixed;
